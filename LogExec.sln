@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogExec", "LogExec\LogExec.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogExec.UnitTests", "LogExec.UnitTests\LogExec.UnitTests.csproj", "{4B54A380-6A84-4165-8FAE-4E5B2773C701}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{05863E1C-EF23-4024-A016-127B9E031EBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogExec.Sample.Console", "Samples\LogExec.Sample.Console\LogExec.Sample.Console.csproj", "{C2288393-DCBB-4806-936D-B4DCEFC99A38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,8 +23,15 @@ Global
 		{4B54A380-6A84-4165-8FAE-4E5B2773C701}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B54A380-6A84-4165-8FAE-4E5B2773C701}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B54A380-6A84-4165-8FAE-4E5B2773C701}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2288393-DCBB-4806-936D-B4DCEFC99A38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2288393-DCBB-4806-936D-B4DCEFC99A38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2288393-DCBB-4806-936D-B4DCEFC99A38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2288393-DCBB-4806-936D-B4DCEFC99A38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C2288393-DCBB-4806-936D-B4DCEFC99A38} = {05863E1C-EF23-4024-A016-127B9E031EBA}
 	EndGlobalSection
 EndGlobal
