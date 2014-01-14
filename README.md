@@ -18,7 +18,8 @@ Following is a sample usage of LogExec:
       // Useful work done.
     }
     
-    // As soon as the ExecutionTimeLogger instance is disposed the execution time is logged (as shown below) using the logging framework that you are using in your code.
+    // As soon as the ExecutionTimeLogger instance is disposed the execution time 
+    // is logged (as shown below) using the logging framework that you are using in your code.
 
 Sample log file entry
 =====================
