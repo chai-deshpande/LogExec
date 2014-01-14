@@ -5,6 +5,9 @@ using Common.Logging;
 
 namespace LogExec
 {
+  /// <summary>
+  /// This class is used to log the execution time for the code that executes within its scope.
+  /// </summary>
   public class ExecutionTimeLogger : IDisposable
   {
     private const string DefaultExecutionContext = "UN-NAMED";
@@ -19,12 +22,19 @@ namespace LogExec
       _stopwatch.Start();
     }
 
+    /// <summary>
+    /// Constructor that accepts an execution context.
+    /// </summary>
+    /// <param name="executionContext">The execution context is used to print it in the log file.</param>
     public ExecutionTimeLogger(string executionContext)
     {
       _executionContext = string.IsNullOrEmpty(executionContext) ? DefaultExecutionContext : executionContext;
       _stopwatch.Start();
     }
 
+    /// <summary>
+    /// Returns the current value of the execution time.
+    /// </summary>
     public long ExecutionTime
     {
       get
@@ -33,33 +43,54 @@ namespace LogExec
       }
     }
 
+    /// <summary>
+    /// Pauses the timer used to calculate the execution time.
+    /// </summary>
     public void Pause()
     {
-      _stopwatch.Stop();
-    }
-
-    public void Resume()
-    {
-      _stopwatch.Start();
-    }
-
-    public void Resstart()
-    {
-      _stopwatch.Restart();
-    }
-
-    public void Reset()
-    {
-      _stopwatch.Reset();
+      if (_stopwatch.IsRunning)
+      {
+        _stopwatch.Stop();
+      }
     }
 
     /// <summary>
-    /// Logs the effort in milliseconds since the beginning of the execution unit. Includes execution time for all previous milestones (if any).
+    /// Resumes the timer paused using the Pause method of LogExec.
+    /// </summary>
+    public void Resume()
+    {
+      if (!_stopwatch.IsRunning)
+      {
+        _stopwatch.Start();
+      }
+    }
+
+    /// <summary>
+    /// Resumes the timer paused using the Pause method of LogExec.
+    /// </summary>
+    public void Stop()
+    {
+      if (!_stopwatch.IsRunning)
+      {
+        _stopwatch.Stop();
+      }
+    }
+
+    /// <summary>
+    /// Logs the effort in milliseconds since the beginning of the execution timer. Includes execution time for all previous milestones (if any).
     /// </summary>
     /// <param name="mileStoneName">The display name of the milestone</param>
     public void LogMilestone(string mileStoneName)
     {
       Logger.Info(string.Format("Execution time for [{0} ===> {2}]: [{1}] ms", _executionContext, _stopwatch.ElapsedMilliseconds, mileStoneName));
+    }
+
+    /// <summary>
+    /// Logs the effort in milliseconds since the beginning of the execution timer. Includes execution time for all previous milestones (if any).
+    /// </summary>
+    public void Log()
+    {
+      Logger.Info(string.Format("Execution time for [{0}]: [{1}] ms", _executionContext, _stopwatch.ElapsedMilliseconds));
     }
 
     public void Dispose()
