@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LogExec")]
-[assembly: AssemblyDescription("Logs the execution time for units of code")]
+[assembly: AssemblyTitle("LogExec.Sample.Mvc.Web")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Chaitanya Deshpande")]
-[assembly: AssemblyProduct("LogExec")]
-[assembly: AssemblyCopyright("Copyright © 2014")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("LogExec.Sample.Mvc.Web")]
+[assembly: AssemblyCopyright("Copyright © Microsoft 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("374ded65-f82d-48ee-88c7-af337753f8cb")]
+[assembly: Guid("e3d5524c-1c3d-4ba8-9b5c-eeb1f298143d")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -29,8 +29,7 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-// You can specify all the values or you can default the Build and Revision Numbers 
+// You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]

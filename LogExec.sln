@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogExec.Sample.Mvc.Web", "Samples\LogExec.Sample.Mvc.Web\LogExec.Sample.Mvc.Web.csproj", "{0C1984F2-716E-4F48-87FE-6A69051EAF37}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,11 +35,16 @@ Global
 		{C2288393-DCBB-4806-936D-B4DCEFC99A38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2288393-DCBB-4806-936D-B4DCEFC99A38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2288393-DCBB-4806-936D-B4DCEFC99A38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C1984F2-716E-4F48-87FE-6A69051EAF37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C1984F2-716E-4F48-87FE-6A69051EAF37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C1984F2-716E-4F48-87FE-6A69051EAF37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C1984F2-716E-4F48-87FE-6A69051EAF37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C2288393-DCBB-4806-936D-B4DCEFC99A38} = {05863E1C-EF23-4024-A016-127B9E031EBA}
+		{0C1984F2-716E-4F48-87FE-6A69051EAF37} = {05863E1C-EF23-4024-A016-127B9E031EBA}
 	EndGlobalSection
 EndGlobal
