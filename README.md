@@ -24,3 +24,7 @@ Following is a sample usage of LogExec:
 Sample log file entry
 =====================
 INFO  2014-01-13 20:09:52,918   thread:9  1678ms LogExec.ExecutionTimeLogger => Execution time for [Console Sample]: [1500] ms
+
+Nuget Package
+=============
+Nuget package is available at https://www.nuget.org/packages/LogExec/
