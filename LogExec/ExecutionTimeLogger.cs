@@ -33,7 +33,7 @@ namespace LogExec
     /// <summary>
     /// Constructor that accepts an execution context.
     /// </summary>
-    /// <param name="executionContext">The execution context is used to print it in the log file.</param>
+    /// <param name="executionContext">The execution context is used to print in the log file.</param>
     /// <param name="startImmediately">Starts the timer immediately (default). If false is passed, then you must call the Start method.</param>
     public ExecutionTimeLogger(string executionContext, bool startImmediately = true)
     {
@@ -70,7 +70,7 @@ namespace LogExec
     }
 
     /// <summary>
-    /// Resumes the paused LogExec timer.
+    /// Resumes the paused LogExec timer if it is already paused.
     /// </summary>
     public void Resume()
     {

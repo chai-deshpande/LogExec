@@ -10,8 +10,11 @@
     <projectUrl>https://github.com/chai-deshpande/LogExec</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Initial release</releaseNotes>
+    <releaseNotes>
+      1. Added ability to override log messages
+      2. The constructor now has a parameter to not start the timer immediately with an additional Start method.
+    </releaseNotes>
     <copyright>Copyright 2014</copyright>
-    <tags>Log execution time</tags>
+    <tags>logging execution log performance logger</tags>
   </metadata>
 </package>
