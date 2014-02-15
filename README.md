@@ -25,6 +25,17 @@ Sample log file entry
 =====================
 INFO  2014-01-13 20:09:52,918   thread:9  1678ms LogExec.ExecutionTimeLogger => Execution time for [Console Sample]: [1500] ms
 
+Configuring log messages
+========================
+The log messages can be overridden by adding the following entries in the respective app.config or web.config files of your application (for the message that you intend to change). See the wiki for more details.
+```
+  <appSettings>
+    <!-- Overridden formats for execution time log messages -->
+    <add key="LogExec.Message" value="Custom message exec time for {0}: {1} ms" />
+    <add key="LogExec.MilestoneMessage" value="***** MILESTONE ***** Exec time for {0} => {1}]: {2} ms" />
+  </appSettings>
+```
+
 Nuget Package
 =============
 Nuget package is available at https://www.nuget.org/packages/LogExec/
