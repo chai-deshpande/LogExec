@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("LogExec")]
-[assembly: AssemblyDescription("Logs the execution time for units of code")]
+[assembly: AssemblyDescription("Logs the execution time for blocks of code")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Chaitanya Deshpande")]
 [assembly: AssemblyProduct("LogExec")]

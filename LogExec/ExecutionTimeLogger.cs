@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Configuration;
 using System.Diagnostics;
-using System.Reflection;
 using Common.Logging;
 
 namespace LogExec
@@ -10,30 +10,45 @@ namespace LogExec
   /// </summary>
   public class ExecutionTimeLogger : IDisposable
   {
+    // Default messages.
     private const string DefaultExecutionContext = "UN-NAMED";
-    private static readonly ILog Logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+    private const string DefaultLogMessage = "Execution time for [{0}]: [{1}] ms";
+    private const string DefaultMilestoneMessage = "Execution time for [{0} ===> {1}]: [{2}] ms";
+    
+    // Configuration keys.
+    private const string MessageKey = "LogExec.Message";
+    private const string MilestoneMessageKey = "LogExec.MilestoneMessage";
+    
+    // Logged instance.
+    private static readonly ILog Logger = LogManager.GetCurrentClassLogger();
 
+    // Member variables.
     private readonly string _executionContext;
-    private readonly Stopwatch _stopwatch = new Stopwatch();
+    private readonly string _milestoneLogMessage;
+    private readonly string _logMessage;
 
-    public ExecutionTimeLogger()
-    {
-      _executionContext = DefaultExecutionContext;
-      _stopwatch.Start();
-    }
+    // The stopwatch instance.
+    private readonly Stopwatch _stopwatch = new Stopwatch();
 
     /// <summary>
     /// Constructor that accepts an execution context.
     /// </summary>
     /// <param name="executionContext">The execution context is used to print it in the log file.</param>
-    public ExecutionTimeLogger(string executionContext)
+    /// <param name="startImmediately">Starts the timer immediately (default). If false is passed, then you must call the Start method.</param>
+    public ExecutionTimeLogger(string executionContext, bool startImmediately = true)
     {
       _executionContext = string.IsNullOrEmpty(executionContext) ? DefaultExecutionContext : executionContext;
-      _stopwatch.Start();
+      _milestoneLogMessage = ConfigurationManager.AppSettings[MilestoneMessageKey] ?? DefaultMilestoneMessage;
+      _logMessage = ConfigurationManager.AppSettings[MessageKey] ?? DefaultLogMessage;
+
+      if (startImmediately)
+      {
+        _stopwatch.Start();
+      }
     }
 
     /// <summary>
-    /// Returns the current value of the execution time.
+    /// Returns the current execution time.
     /// </summary>
     public long ExecutionTime
     {
@@ -44,7 +59,7 @@ namespace LogExec
     }
 
     /// <summary>
-    /// Pauses the timer used to calculate the execution time.
+    /// Pauses the LogExec timer used to calculate the execution time.
     /// </summary>
     public void Pause()
     {
@@ -55,7 +70,7 @@ namespace LogExec
     }
 
     /// <summary>
-    /// Resumes the timer paused using the Pause method of LogExec.
+    /// Resumes the paused LogExec timer.
     /// </summary>
     public void Resume()
     {
@@ -66,11 +81,22 @@ namespace LogExec
     }
 
     /// <summary>
-    /// Resumes the timer paused using the Pause method of LogExec.
+    /// Starts the LogExec timer if it is not already running.
+    /// </summary>
+    public void Start()
+    {
+      if (!_stopwatch.IsRunning)
+      {
+        _stopwatch.Start();
+      }
+    }
+
+    /// <summary>
+    /// Stops the LogExec timer if it is running.
     /// </summary>
     public void Stop()
     {
-      if (!_stopwatch.IsRunning)
+      if (_stopwatch.IsRunning)
       {
         _stopwatch.Stop();
       }
@@ -82,7 +108,7 @@ namespace LogExec
     /// <param name="mileStoneName">The display name of the milestone</param>
     public void LogMilestone(string mileStoneName)
     {
-      Logger.Info(string.Format("Execution time for [{0} ===> {2}]: [{1}] ms", _executionContext, _stopwatch.ElapsedMilliseconds, mileStoneName));
+      Logger.Info(string.Format(_milestoneLogMessage, _executionContext, mileStoneName, _stopwatch.ElapsedMilliseconds));
     }
 
     /// <summary>
@@ -90,13 +116,16 @@ namespace LogExec
     /// </summary>
     public void Log()
     {
-      Logger.Info(string.Format("Execution time for [{0}]: [{1}] ms", _executionContext, _stopwatch.ElapsedMilliseconds));
+      Logger.Info(string.Format(_logMessage, _executionContext, _stopwatch.ElapsedMilliseconds));
     }
 
+    /// <summary>
+    /// Stops the timer and logs the execution time using the configured logger.
+    /// </summary>
     public void Dispose()
     {
       _stopwatch.Stop();
-      Logger.Info(string.Format("Execution time for [{0}]: [{1}] ms", _executionContext, _stopwatch.ElapsedMilliseconds));
+      Logger.Info(string.Format(_logMessage, _executionContext, _stopwatch.ElapsedMilliseconds));
     }
   }
 }

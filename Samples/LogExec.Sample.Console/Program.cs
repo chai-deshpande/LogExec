@@ -10,15 +10,22 @@ namespace LogExec.Sample.Console
       var executionTimeLogger = new ExecutionTimeLogger("Main function");
 
       // Enclose the code you are interested in a using block.
-      using (new ExecutionTimeLogger("Console Sample"))
+      using (var workLogger = new ExecutionTimeLogger("Dummy Work"))
       {
         // Do some useful work.
 
         // Pretending to do useful work.
         Thread.Sleep(1500);
+        workLogger.LogMilestone("DAL completed");
+
+        // Pretending to more useful work.
+        Thread.Sleep(400);
+        workLogger.LogMilestone("Business logic completed");
 
         // Useful work done.
+        Thread.Sleep(100);
       }
+      executionTimeLogger.LogMilestone("Finished dummy work");
 
       Thread.Sleep(200);
 
