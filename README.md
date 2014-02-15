@@ -21,16 +21,17 @@ Following is a sample usage of LogExec:
     // As soon as the ExecutionTimeLogger instance is disposed the execution time 
     // is logged (as shown below) using the logging framework that you are using in your code.
 
-Sample log file entry
-=====================
+### Sample log file entry
+
 INFO  2014-01-13 20:09:52,918   thread:9  1678ms LogExec.ExecutionTimeLogger => Execution time for [Console Sample]: [1500] ms
 
-Reference
-=====================
+## Getting Started
+The [Getting Started](https://github.com/chai-deshpande/LogExec/wiki/Getting-Started) guide has also been updated on the wiki.
+
+## Reference
 The Reference for the ExecutionTimeLogger class can be accessed on the [Reference page](https://github.com/chai-deshpande/LogExec/wiki/Reference) on the wiki.
 
-Configuring log messages
-========================
+## Configuring log messages
 The log messages can be overridden by adding the following entries in the respective app.config or web.config files of your application (for the message that you intend to change). See the [Customizing Log Messages page](https://github.com/chai-deshpande/LogExec/wiki/Customizing-Log-Messages) on the wiki for more details.
 
 ```
@@ -41,6 +42,5 @@ The log messages can be overridden by adding the following entries in the respec
   </appSettings>
 ```
 
-Nuget Package
-=============
+## Nuget Package
 Nuget package is available at https://www.nuget.org/packages/LogExec/
