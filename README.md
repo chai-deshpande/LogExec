@@ -21,9 +21,10 @@ Following is a sample usage of LogExec:
     // As soon as the ExecutionTimeLogger instance is disposed the execution time 
     // is logged (as shown below) using the logging framework that you are using in your code.
 
-### Sample log file entry
-
+**Sample log file entry**
+```
 INFO  2014-01-13 20:09:52,918   thread:9  1678ms LogExec.ExecutionTimeLogger => Execution time for [Console Sample]: [1500] ms
+```
 
 ## Getting Started
 The [Getting Started](https://github.com/chai-deshpande/LogExec/wiki/Getting-Started) guide has also been updated on the wiki.
