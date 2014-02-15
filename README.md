@@ -27,7 +27,7 @@ INFO  2014-01-13 20:09:52,918   thread:9  1678ms LogExec.ExecutionTimeLogger => 
 ```
 
 ## Getting Started
-The [Getting Started](https://github.com/chai-deshpande/LogExec/wiki/Getting-Started) guide has also been updated on the wiki.
+The [Getting Started](https://github.com/chai-deshpande/LogExec/wiki/Getting-Started) guide is available on the wiki.
 
 ## Reference
 The Reference for the ExecutionTimeLogger class can be accessed on the [Reference page](https://github.com/chai-deshpande/LogExec/wiki/Reference) on the wiki.
