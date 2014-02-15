@@ -25,9 +25,14 @@ Sample log file entry
 =====================
 INFO  2014-01-13 20:09:52,918   thread:9  1678ms LogExec.ExecutionTimeLogger => Execution time for [Console Sample]: [1500] ms
 
+Reference
+=====================
+The Reference for the ExecutionTimeLogger class can be accessed on the [Reference page](https://github.com/chai-deshpande/LogExec/wiki/Reference) on the wiki.
+
 Configuring log messages
 ========================
-The log messages can be overridden by adding the following entries in the respective app.config or web.config files of your application (for the message that you intend to change). See the wiki for more details.
+The log messages can be overridden by adding the following entries in the respective app.config or web.config files of your application (for the message that you intend to change). See the [Customizing Log Messages page](https://github.com/chai-deshpande/LogExec/wiki/Customizing-Log-Messages) on the wiki for more details.
+
 ```
   <appSettings>
     <!-- Overridden formats for execution time log messages -->
