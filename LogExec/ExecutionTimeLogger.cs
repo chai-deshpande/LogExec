@@ -26,6 +26,10 @@ namespace LogExec
     private readonly string _executionContext;
     private readonly string _milestoneLogMessage;
     private readonly string _logMessage;
+    private readonly bool _infoOnly;
+    private readonly long _warnAbove;
+    private readonly long _errorAbove;
+    private readonly long _fatalAbove;
 
     // The stopwatch instance.
     private readonly Stopwatch _stopwatch = new Stopwatch();
@@ -35,11 +39,20 @@ namespace LogExec
     /// </summary>
     /// <param name="executionContext">The execution context is used to print in the log file.</param>
     /// <param name="startImmediately">Starts the timer immediately (default). If false is passed, then you must call the Start method.</param>
-    public ExecutionTimeLogger(string executionContext, bool startImmediately = true)
+    /// <param name="infoOnly">Logs messages only using the Info type</param>
+    /// <param name="warnAbove">Logs messages using the Warning type if the elapsed time goes above this threshhold</param>
+    /// <param name="errorAbove">Logs messages using the Error type if the elapsed time goes above this threshhold</param>
+    /// <param name="fatalAbove">Logs messages using the Fatal type if the elapsed time goes above this threshhold</param>
+    public ExecutionTimeLogger(string executionContext, bool startImmediately = true, bool infoOnly = true, long warnAbove = 100, long errorAbove = 500, long fatalAbove = 1000)
     {
       _executionContext = string.IsNullOrEmpty(executionContext) ? DefaultExecutionContext : executionContext;
       _milestoneLogMessage = ConfigurationManager.AppSettings[MilestoneMessageKey] ?? DefaultMilestoneMessage;
       _logMessage = ConfigurationManager.AppSettings[MessageKey] ?? DefaultLogMessage;
+
+      _infoOnly = infoOnly;
+      _warnAbove = warnAbove;
+      _errorAbove = errorAbove;
+      _fatalAbove = fatalAbove;
 
       if (startImmediately)
       {
@@ -116,7 +129,7 @@ namespace LogExec
     /// </summary>
     public void Log()
     {
-      Logger.Info(string.Format(_logMessage, _executionContext, _stopwatch.ElapsedMilliseconds));
+      DoLog();
     }
 
     /// <summary>
@@ -125,7 +138,30 @@ namespace LogExec
     public void Dispose()
     {
       _stopwatch.Stop();
-      Logger.Info(string.Format(_logMessage, _executionContext, _stopwatch.ElapsedMilliseconds));
+      
+      DoLog();
+    }
+
+    private void DoLog()
+    {
+      var elapsedMilliseconds = _stopwatch.ElapsedMilliseconds;
+      
+      if (_infoOnly || elapsedMilliseconds <= _warnAbove)
+      {
+        Logger.Info(string.Format(_logMessage, _executionContext, _stopwatch.ElapsedMilliseconds));
+      }
+      else if (elapsedMilliseconds <= _errorAbove)
+      {
+        Logger.Warn(string.Format(_logMessage, _executionContext, _stopwatch.ElapsedMilliseconds));
+      }
+      else if (elapsedMilliseconds <= _fatalAbove)
+      {
+        Logger.Error(string.Format(_logMessage, _executionContext, _stopwatch.ElapsedMilliseconds));
+      }
+      else
+      {
+        Logger.Fatal(string.Format(_logMessage, _executionContext, _stopwatch.ElapsedMilliseconds));
+      }
     }
   }
 }
