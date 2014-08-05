@@ -51,6 +51,7 @@ Nuget package is available at https://www.nuget.org/packages/LogExec/
 **8-Aug-2014**
   1. Added ability to specify thresholds for warning, error and fatal log messages 
   2. This adds the ability to do various things like e.g. add an event viewer entry if the execution time goes above a certain level and send emails if it is in excess of yet another level
+  3. Details are [here](./Thresholds-for-warning,-error-and-fatal-messages)
 
 **15-Feb-2014**
   1. Added ability to override log messages
