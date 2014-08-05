@@ -7,7 +7,7 @@ namespace LogExec.Sample.Console
   {
     static void Main(string[] args)
     {
-      var executionTimeLogger = new ExecutionTimeLogger("Main function", true, false);
+      var executionTimeLogger = new ExecutionTimeLogger("Main function", true);
 
       // Enclose the code you are interested in a using block.
       using (var workLogger = new ExecutionTimeLogger("Dummy Work"))
@@ -32,22 +32,22 @@ namespace LogExec.Sample.Console
       executionTimeLogger.Stop();
       executionTimeLogger.Log();
 
-      // Enclose the code you are interested in a using block including custom logging types
-      using (var workLogger = new ExecutionTimeLogger("Dummy Work with logging types", true, false))
+      // Enclose the code you are interested in a using block including custom thresholds
+      using (var workLogger = new ExecutionTimeLogger("Dummy Work with logging types", startImmediately: true, infoOnly: false, warnAbove: 75, errorAbove: 400, fatalAbove: 800))
       {
         // Do some useful work.
 
         // Pretending to do useful work.
         Thread.Sleep(50);
-        workLogger.LogMilestone("CUSTOM - DAL completed");
+        workLogger.LogMilestone("DAL completed");
 
         // Pretending to more useful work.
         Thread.Sleep(400);
-        workLogger.LogMilestone("CUSTOM - Business logic completed");
+        workLogger.LogMilestone("Business logic completed");
 
         // Pretending to more useful work.
         Thread.Sleep(400);
-        workLogger.LogMilestone("CUSTOM - External component business logic completed");
+        workLogger.LogMilestone("External component business logic completed");
 
         // Useful work done.
         Thread.Sleep(100);

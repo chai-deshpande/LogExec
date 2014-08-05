@@ -10,9 +10,14 @@
     <projectUrl>https://github.com/chai-deshpande/LogExec</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
+    <summary>
+      Logs the execution time for snippets of code. Simply include the code you want to measure the execution time for within a using block and the execution time will get logged in the logging framework of your choice.
+      LogExec uses Common.Logging and hence not tied to a specific logging provider.
+      The project hosted on GitHub has sample console application that shows the usage of the library.
+    </summary>
     <releaseNotes>
-      1. Added ability to override log messages
-      2. The constructor now has a parameter to not start the timer immediately with an additional Start method.
+      1. Added ability to specify thresholds for warning, error and fatal log messages
+      2. This adds the ability to do various things like e.g. add an event viewer entry if the execution time goes above a certain level and send emails if it is in excess of yet another level
     </releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>logging execution log performance logger</tags>
