@@ -39,10 +39,32 @@ namespace LogExec
     /// </summary>
     /// <param name="executionContext">The execution context is used to print in the log file.</param>
     /// <param name="startImmediately">Starts the timer immediately (default). If false is passed, then you must call the Start method.</param>
+    public ExecutionTimeLogger(string executionContext, bool startImmediately = true)
+    {
+      _executionContext = string.IsNullOrEmpty(executionContext) ? DefaultExecutionContext : executionContext;
+      _milestoneLogMessage = ConfigurationManager.AppSettings[MilestoneMessageKey] ?? DefaultMilestoneMessage;
+      _logMessage = ConfigurationManager.AppSettings[MessageKey] ?? DefaultLogMessage;
+
+      _infoOnly = true;
+      _warnAbove = 0;
+      _errorAbove = 0;
+      _fatalAbove = 0;
+
+      if (startImmediately)
+      {
+        _stopwatch.Start();
+      }
+    }
+
+    /// <summary>
+    /// Constructor that accepts an execution context.
+    /// </summary>
+    /// <param name="executionContext">The execution context is used to print in the log file.</param>
+    /// <param name="startImmediately">Starts the timer immediately (default). If false is passed, then you must call the Start method.</param>
     /// <param name="infoOnly">Logs messages only using the Info type</param>
-    /// <param name="warnAbove">Logs messages using the Warning type if the elapsed time goes above this threshhold</param>
-    /// <param name="errorAbove">Logs messages using the Error type if the elapsed time goes above this threshhold</param>
-    /// <param name="fatalAbove">Logs messages using the Fatal type if the elapsed time goes above this threshhold</param>
+    /// <param name="warnAbove">Logs messages using the Warning type if the elapsed time goes above this threshold</param>
+    /// <param name="errorAbove">Logs messages using the Error type if the elapsed time goes above this threshold</param>
+    /// <param name="fatalAbove">Logs messages using the Fatal type if the elapsed time goes above this threshold</param>
     public ExecutionTimeLogger(string executionContext, bool startImmediately = true, bool infoOnly = true, long warnAbove = 100, long errorAbove = 500, long fatalAbove = 1000)
     {
       _executionContext = string.IsNullOrEmpty(executionContext) ? DefaultExecutionContext : executionContext;
