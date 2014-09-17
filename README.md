@@ -1,7 +1,7 @@
 LogExec
 =======
 
-Logs the execution time for units/blocks of code. Often times while optimizing code for performance we need to know what is the execution time for blocks of code. LogExec can be very easily used to print the execution time for blocks of codeby avoid a lot of the boilerplate code.
+Logs the execution time for units/blocks of code. Often times while optimizing code for performance we need to know what is the execution time for blocks of code. LogExec can be very easily used to log the execution time for blocks of code. Using a library like LogExec helps avoid a lot of the boilerplate code.
 
 LogExec uses the Common.Logging abstraction library so that it is not tied to any specific logging provider.
 
