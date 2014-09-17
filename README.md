@@ -48,6 +48,9 @@ The log messages can be overridden by adding the following entries in the respec
 Nuget package is available at https://www.nuget.org/packages/LogExec/
 
 ## Releases
+**16-Sep-2014**
+  1. Fixed a backward compatibility problem
+  
 **8-Aug-2014**
   1. Added ability to specify thresholds for warning, error and fatal log messages 
   2. This adds the ability to do various things like e.g. add an event viewer entry if the execution time goes above a certain level and send emails if it is in excess of yet another level
